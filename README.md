@@ -16,28 +16,14 @@ Official implementation of the paper:
 
 ## Overview
 
-PIATSG is a multi-component physics-informed framework for precision UAV control that integrates Physics-Informed Neural Networks (PINNs), Neural Operators (DeepONet), Decision Transformers, and Control Barrier Functions (CBFs) within a Soft Actor-Critic architecture. The framework achieves **91.9% precision within 10cm tolerance** while maintaining **99.88% physics consistency** and **100% safety compliance**.
-
-### Key Results
-
-| Metric | Value |
-|--------|-------|
-| 10 cm precision | 91.9% |
-| 5 cm precision | 55.3% |
-| 2 cm precision | 5.5% |
-| Physics consistency | 99.88% |
-| Safety compliance | 100.0% |
-| Training time | 5.6 h (consumer GPU) |
-| Improvement over best baseline (PPO) | +38.6 pp |
+PIATSG is a multi-component physics-informed framework for precision UAV control that integrates Physics-Informed Neural Networks (PINNs), Neural Operators (DeepONet), Decision Transformers, and Control Barrier Functions (CBFs) within a Soft Actor-Critic architecture.
 
 ## Architecture
 
-The framework integrates four physics-informed components within a unified SAC-based architecture (6.18M total parameters):
-
-- **AdaptivePINN** (1.25M params) — Encodes Newton-Euler dynamics via automatic differentiation, enforcing physics consistency through PDE residual losses
-- **Neural Operator** (366K params) — DeepONet branch-trunk architecture for function-to-function state prediction with residual connections
-- **Decision Transformer** (2.46M params) — 8-head attention over 50-step history for temporal context generation at 100 Hz control frequency
-- **Safety CBF** (246K params) — Control Barrier Functions with QP projection ensuring flight envelope constraints (altitude, position, velocity, tilt)
+- **AdaptivePINN** — Encodes Newton-Euler dynamics via automatic differentiation, enforcing physics consistency through PDE residual losses
+- **Neural Operator** — DeepONet branch-trunk architecture for function-to-function state prediction with residual connections
+- **Decision Transformer** — Multi-head attention over trajectory history for temporal context generation
+- **Safety CBF** — Control Barrier Functions with QP projection ensuring flight envelope constraints (altitude, position, velocity, tilt)
 
 ## Project Structure
 
@@ -176,16 +162,16 @@ python experiments/spatio_generate_paper_figure.py --model models/best_precision
 ## Reproducing Paper Results
 
 ```bash
-# Step 1: Train full PIATSG (5000 episodes, ~5.6h)
+# Step 1: Train full PIATSG
 python main.py --episodes 5000 --seed 42 --no-viewer
 
-# Step 2: Run ablation study (Table 4)
+# Step 2: Run ablation study
 python experiments/ablation_study.py --model models/best_physics.pth --episodes 20 --seed 42
 
 # Step 3: Extended horizon evaluation
 python experiments/extended_horizon_evaluation.py --model models/best_precision_5cm.pth
 
-# Step 4: Spatiotemporal analysis (Fig. 16)
+# Step 4: Spatiotemporal analysis
 python experiments/spatio_generate_paper_figure.py --model models/best_precision_5cm.pth
 ```
 
