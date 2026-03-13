@@ -1,0 +1,75 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+Pipfile.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing and coverage
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+test-reports/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Training outputs
+runs/
+logs/
+*.log
+events.out.tfevents.*
+
+# Model checkpoints
+*.pth
+models/
+
+# MuJoCo logs
+MUJOCO_LOG.TXT
+
+# Generated results and evaluations
+*_results/
+curriculum_training/checkpoints/
+curriculum_training/evaluations/
+curriculum_training/logs/
+extended_eval_results/
+multi_uav_results/
+paper_spatiotemporal/
+stage1_curriculum_eval/
+
+# Generated figures, tables, and PDFs
+figures/
+*.pdf
+
+# Large data files
+*.zip
+
+# Gradient analysis outputs
+gradient_logs/
+
+# Claude Code
+.claude/
