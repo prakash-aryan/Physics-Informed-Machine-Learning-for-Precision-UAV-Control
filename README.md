@@ -4,6 +4,10 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
 [![MuJoCo](https://img.shields.io/badge/MuJoCo-2.3+-green.svg)](https://mujoco.org/)
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/faca1356-626d-4fb0-9ec7-a6d1f83e05fd" alt="demo">
+</p>
+
 Official implementation of the paper:
 
 > **Physics-informed machine learning for precision Unmanned Aerial Vehicle control: Adaptive transformers with safety guarantees**
